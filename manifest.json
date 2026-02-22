@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Normalizer PoC (YouTube Demo)",
+  "description": "Prototype interne de démonstration pour YouTube/Google — normalisation audio en temps réel avec bouton ON/OFF.",
+  "version": "0.1",
+
+  "permissions": [
+    "storage"
+  ],
+
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": [
+        "audioEngine.js",
+        "content.js",
+        "ui.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["loudness-processor.js"],
+      "matches": ["https://www.youtube.com/*"]
+    }
+  ]
+}
